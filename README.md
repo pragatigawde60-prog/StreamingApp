@@ -132,6 +132,15 @@ Automated tests are not yet included. Recommended smoke checks:
 1. Register and log in through the web UI.
 2. Upload a small video + thumbnail via the admin dashboard (requires valid S3 credentials).
 3. Confirm playback from the browse page and verify that chat messages broadcast between multiple browser tabs.
+# Screenshots:
+<img width="940" height="525" alt="image" src="https://github.com/user-attachments/assets/bf3be860-d13b-432c-9455-ef9e45e6bfac" />
+
+<img width="940" height="590" alt="image" src="https://github.com/user-attachments/assets/4e8f0abb-34d4-4fc2-bfd9-964a9dcf689e" />
+
+<img width="940" height="530" alt="image" src="https://github.com/user-attachments/assets/661c370c-349a-4a09-95ef-b11fc003fb48" />
+
+<img width="1906" height="1142" alt="image" src="https://github.com/user-attachments/assets/49788261-ab6b-49de-b43a-34e258c7079f" />
+
 
 ## License
 
