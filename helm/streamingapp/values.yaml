@@ -1,0 +1,30 @@
+namespace: streamingapp
+
+image:
+  registry: 665217029177.dkr.ecr.ap-south-1.amazonaws.com
+  tag: "5"
+  pullPolicy: IfNotPresent
+
+mongodb:
+  image: mongo:6
+  storage:
+    className: gp3-ebs
+    size: 5Gi
+
+services:
+  auth:
+    image: streamingapp-auth
+    port: 3001
+  streaming:
+    replicas: 2
+    image: streamingapp-streaming
+    port: 3002
+  admin:
+    image: streamingapp-admin
+    port: 3003
+  chat:
+    image: streamingapp-chat
+    port: 3004
+  frontend:
+    image: streamingapp-frontend
+    port: 80

@@ -8,22 +8,22 @@ pipeline {
 
     parameters {
         string(name: 'REACT_APP_AUTH_API_URL',
-               defaultValue: 'http://localhost:3001/api',
+               defaultValue: '/api',
                description: 'Auth API URL; update for EKS deployment')
         string(name: 'REACT_APP_STREAMING_API_URL',
-               defaultValue: 'http://localhost:3002/api',
+               defaultValue: '/api',
                description: 'Streaming API URL; update for EKS deployment')
         string(name: 'REACT_APP_STREAMING_PUBLIC_URL',
-               defaultValue: 'http://localhost:3002',
+               defaultValue: '',
                description: 'Streaming public URL; update for EKS deployment')
         string(name: 'REACT_APP_ADMIN_API_URL',
-               defaultValue: 'http://localhost:3003/api/admin',
+               defaultValue: '/api/admin',
                description: 'Admin API URL; update for EKS deployment')
         string(name: 'REACT_APP_CHAT_API_URL',
-               defaultValue: 'http://localhost:3004/api/chat',
+               defaultValue: '/api/chat',
                description: 'Chat API URL; update for EKS deployment')
         string(name: 'REACT_APP_CHAT_SOCKET_URL',
-               defaultValue: 'http://localhost:3004',
+               defaultValue: '',
                description: 'Chat socket URL; update for EKS deployment')
     }
 

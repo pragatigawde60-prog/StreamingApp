@@ -130,3 +130,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Local backups and Jenkins runtime data
+*.backup
+*.backup.*
+*.tar.gz
+jenkins-user-config.backup.xml
+reset-jenkins-password.groovy
+jenkins-tools/
+ec2\ describe-security-groups\ \\

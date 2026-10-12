@@ -1,0 +1,55 @@
+{{- $root := . -}}
+{{- range $name := list "auth" "streaming" "admin" "chat" }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamingapp-{{ $name }}
+spec:
+  replicas: {{ index $root.Values.services $name "replicas" | default 1 }}
+  selector:
+    matchLabels:
+      app: streamingapp-{{ $name }}
+  template:
+    metadata:
+      labels:
+        app: streamingapp-{{ $name }}
+    spec:
+      containers:
+        - name: {{ $name }}
+          image: "{{ $root.Values.image.registry }}/{{ index $root.Values.services $name "image" }}:{{ $root.Values.image.tag }}"
+          imagePullPolicy: {{ $root.Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ index $root.Values.services $name "port" }}
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: {{ index $root.Values.services $name "port" | quote }}
+            - name: MONGO_URI
+              value: mongodb://streamingapp-mongodb:27017/streamingapp
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: streamingapp-secrets
+                  key: jwt-secret
+            - name: CLIENT_URLS
+              value: http://streamingapp-frontend
+            - name: CLIENT_URL
+              value: http://streamingapp-frontend
+            - name: AWS_REGION
+              value: ap-south-1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamingapp-{{ $name }}
+spec:
+  type: ClusterIP
+  selector:
+    app: streamingapp-{{ $name }}
+  ports:
+    - name: http
+      port: {{ index $root.Values.services $name "port" }}
+      targetPort: {{ index $root.Values.services $name "port" }}
+{{- end }}
