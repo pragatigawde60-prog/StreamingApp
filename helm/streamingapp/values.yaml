@@ -2,7 +2,7 @@ namespace: streamingapp
 
 image:
   registry: 665217029177.dkr.ecr.ap-south-1.amazonaws.com
-  tag: "5"
+  tag: "6"
   pullPolicy: IfNotPresent
 
 mongodb:
